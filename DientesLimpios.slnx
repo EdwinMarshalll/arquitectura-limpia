@@ -4,5 +4,7 @@
     <Project Path="DientesLimpios.Dominio/DientesLimpios.Dominio.csproj" />
   </Folder>
   <Folder Name="/Infraestructura/" />
-  <Folder Name="/Pruebas/" />
+  <Folder Name="/Pruebas/">
+    <Project Path="DientesLimpios.Pruebas/DientesLimpios.Pruebas.csproj" />
+  </Folder>
 </Solution>
