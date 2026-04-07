@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorio.Comandos.CrearConsultorio
+namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Comandos.CrearConsultorio
 {
     public class ComandoCrearConsultorio
     {

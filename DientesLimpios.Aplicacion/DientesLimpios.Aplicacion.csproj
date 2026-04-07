@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="CasosDeUso\Consultorios\Comandos\CrearConsultorio\CasoDeUsoCrearConsultorio.cs\**" />
+    <EmbeddedResource Remove="CasosDeUso\Consultorios\Comandos\CrearConsultorio\CasoDeUsoCrearConsultorio.cs\**" />
+    <None Remove="CasosDeUso\Consultorios\Comandos\CrearConsultorio\CasoDeUsoCrearConsultorio.cs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DientesLimpios.Dominio\DientesLimpios.Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contratos\Persistencia\" />
+  </ItemGroup>
+
 </Project>
