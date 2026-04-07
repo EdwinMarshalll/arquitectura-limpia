@@ -1,0 +1,13 @@
+CAPA DE APLICACION
+
+- La capa de aplicacio'n es la que se encarga de orquestar los casos de uso del sistema
+- Los casos de uso son acciones especi'ficas que realiza el sistema para cumplir una necesidad del usuario
+- La capa de la aplicacio'n no tiene los detalles de implementacio'n
+- Contratos: Interfaces que vamos a declarar en nuestra capa de aplicacio'n
+
+CQRS: Significa Command-Query Responsibility Segregation, o en espanol: Separacion de responsabilidades entre comandos y consultas.
+	- Es un patron de aquitectura que propone separar las operaciones que modifican el estado del sistema de aquellas que solo consultan informacion.
+	- Permite aplicar el principio de Responsabilidad Unica (SRP)
+	- Es mas facil aplicar pruebas automaticas
+	- Es opcional aplicar el CQRS pero en arquitecturas limpias es util.
+
