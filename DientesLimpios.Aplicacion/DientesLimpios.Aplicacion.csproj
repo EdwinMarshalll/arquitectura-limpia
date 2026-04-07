@@ -16,8 +16,4 @@
     <ProjectReference Include="..\DientesLimpios.Dominio\DientesLimpios.Dominio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contratos\Persistencia\" />
-  </ItemGroup>
-
 </Project>
