@@ -21,7 +21,7 @@ public class CasoDeUsoCrearConsultorio
 
     public async Task<Guid> Handle(ComandoCrearConsultorio comando)
     {
-        var resultadoValidacion = validador.Validate(comando);
+        var resultadoValidacion = await validador.ValidateAsync(comando);
         if (!resultadoValidacion.IsValid)
         {
             // Lanzar excepcion personalizada con el listado de errores de fluent Validation
