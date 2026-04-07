@@ -1,5 +1,6 @@
 ﻿using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
+using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Dominio.Entidades;
 using FluentValidation;
 
@@ -23,7 +24,8 @@ public class CasoDeUsoCrearConsultorio
         var resultadoValidacion = validador.Validate(comando);
         if (!resultadoValidacion.IsValid)
         {
-            // Lanzar excepcion personalizada
+            // Lanzar excepcion personalizada con el listado de errores de fluent Validation
+            throw new ExcepcionDeValidacion(resultadoValidacion);
         }
 
         var consultorio = new Consultorio(comando.Nombre);
