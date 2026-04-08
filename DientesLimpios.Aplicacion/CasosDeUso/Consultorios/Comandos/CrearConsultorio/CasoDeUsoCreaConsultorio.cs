@@ -1,12 +1,13 @@
 ﻿using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Aplicacion.Excepciones;
+using DientesLimpios.Aplicacion.Utilidades.Mediador;
 using DientesLimpios.Dominio.Entidades;
 using FluentValidation;
 
 namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Comandos.CrearConsultorio;
 
-public class CasoDeUsoCrearConsultorio
+public class CasoDeUsoCrearConsultorio : IRequestHandler<ComandoCrearConsultorio, Guid>
 {
     private readonly IRepositorioConsultorios repositorio;
     private readonly IUnidadDeTrabajo unidadDeTrabajo;
