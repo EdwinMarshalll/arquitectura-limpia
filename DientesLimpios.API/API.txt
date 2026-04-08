@@ -1,0 +1,7 @@
+Esta capa (UI) cumple la funcion de punto de entrada al sistema
+
+No contiene logica de negocio ni acceso a la base de datos
+
+Su rol principal es traducir la peticion del usuario y enviarla a la capa de aplicacion
+
+Depende de las capas de aplicacion e infraestructura
