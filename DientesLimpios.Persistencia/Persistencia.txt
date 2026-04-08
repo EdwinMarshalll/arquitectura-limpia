@@ -1,0 +1,10 @@
+Representa la capa mas externa del sistema
+Esta encargada de interactuar con elementos externos.
+
+ La responsabilidad principal es implementar los contratos definidos por las capas interiores.
+
+ La infraestructura de encarga de ese "como"
+
+ Dentro del proyecto de infraestructura suelen encontrarse implementaciones concretas de los repositorios y de otros contratos
+
+ No debe haber logica de negocio, ni validaciones de dominio, ni decisiones que afecten el comportamiento central del sistema, ni acceder infraestructura.
