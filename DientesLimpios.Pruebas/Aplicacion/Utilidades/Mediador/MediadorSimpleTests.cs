@@ -1,4 +1,6 @@
-﻿using DientesLimpios.Aplicacion.Utilidades.Mediador;
+﻿using DientesLimpios.Aplicacion.Excepciones;
+using DientesLimpios.Aplicacion.Utilidades.Mediador;
+using FluentValidation;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 using NSubstitute;
 using System;
@@ -11,7 +13,9 @@ namespace DientesLimpios.Pruebas.Aplicacion.Utilidades.Mediador
 {
     public class MediadorSimpleTests
     {
-        public class RequestFalso : IRequest<string> { }
+        public class RequestFalso : IRequest<string> {
+            public required string Nombre { get; set; }
+        }
 
         public class HandlerFalso : IRequestHandler<RequestFalso, string> { 
             public Task<string> Handle(RequestFalso request)
@@ -20,10 +24,18 @@ namespace DientesLimpios.Pruebas.Aplicacion.Utilidades.Mediador
             }
         }
 
+        public class ValidadorRequestFalso : AbstractValidator<RequestFalso>
+        {
+            public ValidadorRequestFalso()
+            {
+                RuleFor(p => p.Nombre).NotEmpty();
+            }
+        }
+
         [Fact]
         public async Task Send_LlamaMetodoHandler()
         {
-            var request = new RequestFalso();
+            var request = new RequestFalso() { Nombre  = "A"};
 
             var casoDeUsoMock = Substitute.For<IRequestHandler<RequestFalso, string>>();
 
@@ -42,7 +54,7 @@ namespace DientesLimpios.Pruebas.Aplicacion.Utilidades.Mediador
         [Fact]
         public async Task Send_SinHandlerRegistrado_LanzaExcepcion()
         {
-            var request = new RequestFalso();
+            var request = new RequestFalso() { Nombre = "A" };
 
             var casoDeUsoMock = Substitute.For<IRequestHandler<RequestFalso, string>>();
 
@@ -54,6 +66,26 @@ namespace DientesLimpios.Pruebas.Aplicacion.Utilidades.Mediador
             {
                 var resultado = await mediador.Send(request);
             });
+        }
+
+        [Fact]
+        public async Task Send_ComandoNoValido_LanzaExcepcion()
+        {
+            var request = new RequestFalso { Nombre = "" };
+            var serviceProvider = Substitute.For<IServiceProvider>();
+            var validador = new ValidadorRequestFalso();
+
+            serviceProvider
+                .GetService(typeof(IValidator<RequestFalso>))
+                .Returns(validador);
+
+            var mediador = new MediadorSimple(serviceProvider);
+
+            await Assert.ThrowsAsync<ExcepcionDeValidacion>(async () =>
+            {
+                await mediador.Send(request);
+            });
+
         }
     }
 }

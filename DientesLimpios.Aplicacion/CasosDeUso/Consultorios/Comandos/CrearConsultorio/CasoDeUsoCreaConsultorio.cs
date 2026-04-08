@@ -11,24 +11,15 @@ public class CasoDeUsoCrearConsultorio : IRequestHandler<ComandoCrearConsultorio
 {
     private readonly IRepositorioConsultorios repositorio;
     private readonly IUnidadDeTrabajo unidadDeTrabajo;
-    private readonly IValidator<ComandoCrearConsultorio> validador;
 
-    public CasoDeUsoCrearConsultorio(IRepositorioConsultorios repositorio, IUnidadDeTrabajo unidadDeTrabajo, IValidator<ComandoCrearConsultorio> validador)
+    public CasoDeUsoCrearConsultorio(IRepositorioConsultorios repositorio, IUnidadDeTrabajo unidadDeTrabajo)
     {
         this.repositorio = repositorio;
         this.unidadDeTrabajo = unidadDeTrabajo;
-        this.validador = validador;
     }
 
     public async Task<Guid> Handle(ComandoCrearConsultorio comando)
     {
-        var resultadoValidacion = await validador.ValidateAsync(comando);
-        if (!resultadoValidacion.IsValid)
-        {
-            // Lanzar excepcion personalizada con el listado de errores de fluent Validation
-            throw new ExcepcionDeValidacion(resultadoValidacion);
-        }
-
         var consultorio = new Consultorio(comando.Nombre);
         try
         {
