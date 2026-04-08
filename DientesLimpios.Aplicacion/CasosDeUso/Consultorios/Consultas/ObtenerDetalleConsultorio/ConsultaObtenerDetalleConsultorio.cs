@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.DetalleConsultorio
+namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.ObtenerDetalleConsultorio
 {
     public class ConsultaObtenerDetalleConsultorio : IRequest<ConsultorioDetalleDto>
     {

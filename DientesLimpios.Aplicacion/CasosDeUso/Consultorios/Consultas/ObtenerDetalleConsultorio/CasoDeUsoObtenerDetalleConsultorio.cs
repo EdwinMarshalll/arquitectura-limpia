@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.DetalleConsultorio
+namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.ObtenerDetalleConsultorio
 {
     public class CasoDeUsoObtenerDetalleConsultorio : IRequestHandler<ConsultaObtenerDetalleConsultorio, ConsultorioDetalleDto>
     {
@@ -26,13 +26,7 @@ namespace DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.DetalleCon
                 throw new ExcepcionNoEncontrado();
             }
 
-            var dto = new ConsultorioDetalleDto
-            {
-                Id = consultorio.Id,
-                Nombre = consultorio.Nombre,
-            };
-
-            return dto;
+            return consultorio.ADto();
         }
     }
 }

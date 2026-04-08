@@ -1,4 +1,4 @@
-﻿using DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.DetalleConsultorio;
+﻿using DientesLimpios.Aplicacion.CasosDeUso.Consultorios.Consultas.ObtenerDetalleConsultorio;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Dominio.Entidades;
