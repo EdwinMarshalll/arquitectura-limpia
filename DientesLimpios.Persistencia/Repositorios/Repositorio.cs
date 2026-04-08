@@ -25,7 +25,7 @@ namespace DientesLimpios.Persistencia.Repositorios
 
         public Task<T> Agregar(T entidad)
         {
-            context.Update(entidad);
+            context.Add(entidad);
             return Task.FromResult(entidad);
         }
 
