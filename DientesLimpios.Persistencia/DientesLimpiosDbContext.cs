@@ -17,9 +17,15 @@ namespace DientesLimpios.Persistencia
 
         protected DientesLimpiosDbContext()
         {
-
         }
 
-        public DbSet<Consultorio> MyProperty { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DientesLimpiosDbContext).Assembly);
+        }
+
+        public DbSet<Consultorio> Consultorios { get; set; }
     }
 }
